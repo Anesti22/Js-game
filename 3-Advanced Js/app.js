@@ -137,3 +137,163 @@ console.log(age);
 console.log(obj.city);
 
 */
+
+//
+// PASSING FUNCTION AS AN ARGUMENT
+//
+/*
+
+var years = [1990, 1998, 1982, 1990, 1996];
+
+function arrayCalc(arr, fn) {
+    var arrRes = [];
+    for(i = 0; i < arr.length; i++) {
+        arrRes.push(fn(arr[i]));
+    }
+    return arrRes;
+}
+
+
+function calcAge(el) {
+    return 2019 - el;
+}
+
+function isFullAge(el) {
+    return  el >= 18;
+}
+
+
+function maxHeartRate(el) {
+
+    if(el >= 18 && el <= 81) {
+        return Math.round(206.9 - (0.67 * el));
+    } else {
+        return -1;
+    }
+}
+
+var ages = arrayCalc(years, calcAge);
+console.log(ages);
+
+var fullAges = arrayCalc(ages, isFullAge);
+console.log(fullAges);
+
+var rates = arrayCalc(ages, maxHeartRate);
+console.log(rates); */
+
+
+
+//
+// FUNCTION RETURNING FUNCTIONS
+//
+/*
+function interviewQuestion(job) {
+    if(job === 'designer') {
+        return function(name) {
+            console.log(name + ', can you explain what UX is?');
+        }
+    }else if (job === 'teacher'){
+        return function(name) {
+            console.log('What subject do you teach, ' + name + '?');
+        }
+    }else{
+        return function(name) {
+            console.log('Hello ' + name + ' What do you do?');
+        }
+    }
+}
+
+var teacherQuestion = interviewQuestion('teacher');
+var designerQuestion = interviewQuestion('designer');
+
+teacherQuestion('John');
+designerQuestion('Down');
+designerQuestion('Ani');
+designerQuestion('bop');
+
+interviewQuestion('teacher')('bop');
+*/
+
+//
+// IMMEDIATELY INVOKED FUNCTION EXPRESSIONS IIFE
+//
+/*
+function game(){
+    var score = Math.random() * 10;
+    console.log(score >= 5);
+}
+
+game();
+
+(function(goodLuck){
+    var score = Math.random() * 10;
+    console.log(score >= 5 - goodLuck);
+})(5);
+
+*/
+
+
+//
+// CLOUSERS
+//
+
+function retirement(retirementsAge) {
+    var a = ' Years left until retirement.';
+    return function(yearOfBirth) {
+        var age = 2019 - yearOfBirth;
+        console.log((retirementsAge - age) + a);
+    }
+}
+
+var retirementUS = retirement(66);
+retirementUS(1988);
+
+var retirementGermany = retirement(65);
+retirementGermany(1988);
+
+var retirementIceland  = retirement(67);
+retirementIceland(1988);
+
+
+/*
+
+function interviewQuestion(job) {
+    if(job === 'designer') {
+        return function(name) {
+            console.log(name + ', can you explain what UX is?');
+        }
+    }else if (job === 'teacher'){
+        return function(name) {
+            console.log('What subject do you teach, ' + name + '?');
+        }
+    }else{
+        return function(name) {
+            console.log('Hello ' + name + ' What do you do?');
+        }
+    }
+}
+
+*/
+
+/*
+
+function interviewQuestion(proffession){
+    var a = ', can you explain what UX is?';
+
+    return function(name) {
+        console.log(name + a);
+        console.log('I am a '+ proffession + '!');
+    }
+}
+
+
+var interviewQuestionRes = interviewQuestion('designer');
+
+interviewQuestionRes('Nesti');
+
+
+var interviewQuestionResTwo = interviewQuestion('Lawer');
+
+interviewQuestionResTwo('Nesti');
+
+*/
