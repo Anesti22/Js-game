@@ -237,6 +237,7 @@ game();
 // CLOUSERS
 //
 
+/*
 function retirement(retirementsAge) {
     var a = ' Years left until retirement.';
     return function(yearOfBirth) {
@@ -255,7 +256,9 @@ var retirementIceland  = retirement(67);
 retirementIceland(1988);
 
 
-/*
+
+------------------------------------------
+
 
 function interviewQuestion(job) {
     if(job === 'designer') {
@@ -297,3 +300,39 @@ var interviewQuestionResTwo = interviewQuestion('Lawer');
 interviewQuestionResTwo('Nesti');
 
 */
+
+//
+// Bind, Call, Apply
+//
+
+var john = {
+    name: 'john',
+    age: 23,
+    job: 'Programmer',
+    presentation: function (style, timeOfTheDay) {
+        if(style === 'formal') {
+            console.log("Good " + timeOfTheDay + " ladies and gentelman. I\'m a " + this.job + ' and I\'m ' + this.age + ' years old!')
+        }else if(style === 'frendly') {
+            console.log('Hey waht\'s up I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old. Have a nice ' + timeOfTheDay + '.' )
+        }
+    }
+}
+
+var emily = {
+    name: 'Emily',
+    age: 28,
+    job: 'Designer'
+}
+
+john.presentation('formal', 'morning')
+
+john.presentation.call(emily, 'frendly', 'afternoon')
+
+//john.presentation.apply(emily, ['frendly', 'afternoon'])
+
+
+var johnFriendly =
+john.presentation.bind(john, 'friendly');
+
+johnFriendly('morning');
+johnFriendly('night');
