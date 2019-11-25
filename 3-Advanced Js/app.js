@@ -312,7 +312,7 @@ var john = {
     presentation: function (style, timeOfTheDay) {
         if(style === 'formal') {
             console.log("Good " + timeOfTheDay + " ladies and gentelman. I\'m a " + this.job + ' and I\'m ' + this.age + ' years old!')
-        }else if(style === 'frendly') {
+        }else if(style === 'friendly') {
             console.log('Hey waht\'s up I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old. Have a nice ' + timeOfTheDay + '.' )
         }
     }
@@ -334,5 +334,9 @@ john.presentation.call(emily, 'frendly', 'afternoon')
 var johnFriendly =
 john.presentation.bind(john, 'friendly');
 
+var emilyFriendly =
+
+john.presentation.bind(emily, 'formal');
+
 johnFriendly('morning');
-johnFriendly('night');
+emilyFriendly('night');
